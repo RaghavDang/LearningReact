@@ -22,11 +22,10 @@ export class Service{
                 slug,
                 {
                     title,
-                    slug,
                     content,
                     featuredImage, 
                     status, 
-                    userId
+                    userId,
                 }
              )
             
@@ -46,7 +45,7 @@ export class Service{
                     title,
                     content,
                     featuredImage, 
-                    status
+                    status,
                 }
             )
         } catch (error) {
@@ -80,16 +79,13 @@ export class Service{
             return false;
         }
     }
+
     async getPosts(queries =[Query.equal("status", "active")]){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                queries,
-                100,
-                0
-
-                
+                queries,       
             )
         } catch (error) {
             console.log("Appwrite service:: getPosts :: error", error);
@@ -107,7 +103,7 @@ export class Service{
             )
         } catch (error) {
              console.log("Appwrite service:: uploadFile :: error", error);
-            return false;
+            return false
         }
      }
 
@@ -118,6 +114,7 @@ export class Service{
                 fileId
             )
             return true
+            
         } catch (error) {
              console.log("Appwrite service:: deleteFile :: error", error);
             return false;
